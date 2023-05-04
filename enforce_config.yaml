@@ -1,0 +1,16 @@
+auto_terminate: True
+send_slack_alerts: True
+send_email_alerts: False
+mandatory_tags:
+  - kumar:billing:dept
+  - kumar:billing:user
+  - kumar:billing:app
+exceptioned_accounts:
+  - 123456789
+exceptioned_tags:
+  - 387038237196:
+      - kumar:billing:dept
+disabled_resource_types:
+  - "123456789009":
+      - "aws.sagemaker"
+      - "aws.ec2"

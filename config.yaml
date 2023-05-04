@@ -1,0 +1,11 @@
+target_accounts:
+- id: devops2022
+  profile_name: "kumar-e2e"
+  env_type: e2e
+  env_name: "kumar-e2e"
+  account_id: 174841176109
+  dev_manager_corpid: ee_deepakkumar@rediffmail.com
+  region: ap-south-1
+  vpc_id: vpc-07b3dcc0521e8c0eb
+  auto_terminate: False
+  send_email_alerts: False
