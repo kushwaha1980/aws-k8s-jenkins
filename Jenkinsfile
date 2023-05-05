@@ -4,36 +4,37 @@ pipeline {
             defaultContainer "docker-python"
             yaml """
             apiVersion: v1
-            kind: pod
+            kind: Pod
             metadata:
-                annotations:
-                    iam.amazonaws.com/role: "${JENKINS_SLAVE_IAM_ROLE}"
+            annotations:
+                iam.amazonaws.com/role: "${JENKINS_SLAVE_IAM_ROLE}"
+            name: test
             spec:
-                containers:
+            containers:
                 - name: teraform12
-                  image: hashicorp/terraform:1.2.8
-                  command:
-                  - cat
-                  tty: true
+                image: hashicorp/terraform:1.2.8
+                command:
+                - cat
+                tty: true
                 - name: docker-python
-                  image: python:3.8
-                  command:
-                  - cat
-                  ttye: true
-                  volumeMounts:
+                image: python:3.8
+                command:
+                - cat
+                tty: true
+                volumeMounts:
                     - name: shared-build-output
-                      mountPath: /var/run/outputs
+                    mountPath: /var/run/outputs
                     - name: shared-m2
-                      mountPath: /var/run/shared-m2
+                    mountPath: /var/run/shared-m2
                     - name: container-storage
-                      mountPath: /var/lib/containers
-                  volumes:
-                    - name: shared-m2
-                      emptyDir: {}
-                    - name: shared-build-output
-                      emptyDir: {}
-                    - name: container-storage
-                      emptyDir: {}
+                    mountPath: /var/lib/containers 
+            volumes:
+                - name: shared-m2
+                emptyDir: {}
+                - name: shared-build-output
+                emptyDir: {}
+                - name: container-storage
+                emptyDir: {}
             """
         }
     }
