@@ -11,30 +11,30 @@ pipeline {
             name: test
             spec:
             containers:
-                - name: teraform12
-                image: hashicorp/terraform:1.2.8
-                command:
-                - cat
-                tty: true
-                - name: docker-python
-                image: python:3.8
-                command:
-                - cat
-                tty: true
+               - name: teraform12
+                 image: hashicorp/terraform:1.2.8
+                 command:
+                 - cat
+                 tty: true
+               - name: docker-python
+                 image: python:3.8
+                 command:
+                 - cat
+                 tty: true
                 volumeMounts:
-                    - name: shared-build-output
-                    mountPath: /var/run/outputs
-                    - name: shared-m2
-                    mountPath: /var/run/shared-m2
-                    - name: container-storage
-                    mountPath: /var/lib/containers 
+                   - name: shared-build-output
+                     mountPath: /var/run/outputs
+                   - name: shared-m2
+                     mountPath: /var/run/shared-m2
+                   - name: container-storage
+                     mountPath: /var/lib/containers 
             volumes:
                 - name: shared-m2
-                emptyDir: {}
+                  emptyDir: {}
                 - name: shared-build-output
-                emptyDir: {}
+                  emptyDir: {}
                 - name: container-storage
-                emptyDir: {}
+                  emptyDir: {}
             """
         }
     }
